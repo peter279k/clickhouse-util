@@ -42,9 +42,6 @@ if [[ $port_number == "" ]]; then
     exit 1;
 fi;
 
-echo $ip_address
-echo $port_number
-
 if [[ $password == "" ]]; then
     clickhouse-client --host=$ip_address --port=$port_number --query="CREATE DATABASE IF NOT EXISTS $db_name"
 else

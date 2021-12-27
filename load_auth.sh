@@ -14,3 +14,6 @@ ip_address=$(cat $auth_file_path | grep "^ip_address" | awk '{split($1,a,"="); p
 port_number=$(cat $auth_file_path | grep "^port_number" | awk '{split($1,a,"="); print a[2]}')
 password=$(cat $auth_file_path | grep "^password" | awk '{split($1,a,"="); print a[2]}')
 db_name=$(cat $auth_file_path | grep "^db_name" | awk '{split($1,a,"="); print a[2]}')
+
+echo $ip_address
+echo $port_number
