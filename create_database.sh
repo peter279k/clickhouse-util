@@ -32,7 +32,21 @@ if [[ $db_name == "" ]]; then
     db_name=$arg
 fi;
 
-clickhouse-client --host=$ip_address --port=$port_number --password=$password --query="CREATE DATABASE IF NOT EXISTS $db_name"
+if [[ $ip_address == "" ]]; then
+    echo "Please specify IP address"
+    exit 1;
+fi;
+
+if [[ $port_number == "" ]]; then
+    echo "Please specify port number"
+    exit 1;
+fi;
+
+if [[ $password == "" ]]; then
+    clickhouse-client --host=$ip_address --port=$port_number --query="CREATE DATABASE IF NOT EXISTS $db_name"
+else
+    clickhouse-client --host=$ip_address --port=$port_number --password=$password --query="CREATE DATABASE IF NOT EXISTS $db_name"
+fi;
 
 if [[ $? != 0 ]]; then
     exit 1;
