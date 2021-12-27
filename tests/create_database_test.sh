@@ -4,7 +4,7 @@
 test_create_database() {
     cd ..
     ./create_database.sh iotdevice ./tests/fixtures/auth.txt
-    assertSame 0 "$(clickhouse-client --query='show databases' | grep 'iotdevice')"
+    assertSame "iotdevice" "$(clickhouse-client --query='show databases' | grep 'iotdevice')"
 }
 
 # Load shUnit2.

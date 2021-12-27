@@ -30,11 +30,6 @@ fi;
 
 . ./load_auth.sh $auth_file_path
 
-if [[ $database == "" ]]; then
-    echo -e $red_color"The database name is not set on specific auth file!"$rest_color
-    exit 1;
-fi;
-
 if [[ $password == "" ]]; then
     cat $table_query_file | clickhouse-client --host=$ip_address --port=$port_number --database=$db_name
 else
