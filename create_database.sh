@@ -52,4 +52,4 @@ if [[ $? != 0 ]]; then
     exit 1;
 fi;
 
-echo -e $green_color"Creating $db_name Database hsa been done!"$rest_color
+echo -e $green_color"Creating $db_name Database has been done!"$rest_color
