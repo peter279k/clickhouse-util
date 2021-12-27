@@ -2,6 +2,14 @@
 
 [![test](https://github.com/peter279k/clickhouse-util/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/peter279k/clickhouse-util/actions/workflows/test.yml)
 
+# Introduction
+
+Since clickhouse-client is useful command, but it cannot be convenient for users to run commands.
+
+For instance, creating the database need to run one or more commands and this util can run one command at once.
+
+It also has some features about advanced checking. Such as auth setting file checking and so on.
+
 # Usage
 
 - Install ClickHouse DB on Ubuntu 18.04 and 20.04
@@ -82,3 +90,8 @@ localadmin@clickhouse01:~/clickhouse-util$
 - Running development ClickHouse server with `docker run --name clickhouse -p 9000:9000 -p 8123:8123 -d yandex/clickhouse-server` command where default password is blank.
 - Running `cd tests/ && git clone https://github.com/kward/shunit2` command to install shUnit2.
 - Running `./run_tests.sh` command to execute some tests.
+
+
+# Future features
+
+- Using cURL to make HTTP supported
