@@ -1,0 +1,27 @@
+name: test
+
+on: [ push, pull_request ]
+
+jobs:
+  run:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ ubuntu-latest ]
+    name: ClickHouse Utility Bash script tests
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup ClickHouse server
+        uses: EpicStep/clickhouse-github-action@v1.0.0
+
+      - name: ClickHouse Auth setup
+        run: cd tests/fixtures/ && echo "ip_address=127.0.0.1" >> auth.txt && echo "port_number=9000" >> auth.txt && echo "password=" >> auth.txt && echo "db_name=" >> auth.txt
+
+      - name: shunit setup
+        run: cd tests/ && git clone https://github.com/kward/shunit2
+
+      - name: Run shunit test suites
+        run: cd tests/ && ./run_tests.sh
