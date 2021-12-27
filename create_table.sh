@@ -30,7 +30,11 @@ fi;
 
 . ./load_auth.sh $auth_file_path
 
-cat $table_query_file | clickhouse-client --host=$ip_address --port=$port_number --password=$password --database=$db_name
+if [[ $password == "" ]]; then
+    cat $table_query_file | clickhouse-client --host=$ip_address --port=$port_number --database=$db_name
+else
+    cat $table_query_file | clickhouse-client --host=$ip_address --port=$port_number --password=$password --database=$db_name
+fi;
 
 
 if [[ $? != 0 ]]; then

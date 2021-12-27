@@ -30,7 +30,11 @@ fi;
 
 . ./load_auth.sh $auth_file_path
 
-clickhouse-client --host=$ip_address --port=$port_number --password=$password --database=$db_name --query="DROP TABLE IF EXISTS $table_name"
+if [[ $password == "" ]]; then
+    clickhouse-client --host=$ip_address --port=$port_number --database=$db_name --query="DROP TABLE IF EXISTS $table_name"
+else
+    clickhouse-client --host=$ip_address --port=$port_number --password=$password --database=$db_name --query="DROP TABLE IF EXISTS $table_name"
+fi;
 
 
 if [[ $? != 0 ]]; then

@@ -36,8 +36,11 @@ fi;
 
 . ./load_auth.sh $auth_file_path
 
-clickhouse-client --host=$ip_address --port=$port_number --password=$password --database=$db_name --query="SELECT * from $table_name" --format $data_format > $outfile_path
-
+if [[ $password == "" ]]; then
+    clickhouse-client --host=$ip_address --port=$port_number --database=$db_name --query="SELECT * from $table_name" --format $data_format > $outfile_path
+else
+    clickhouse-client --host=$ip_address --port=$port_number --password=$password --database=$db_name --query="SELECT * from $table_name" --format $data_format > $outfile_path
+fi;
 
 if [[ $? != 0 ]]; then
     echo -e $red_color"Exporting data is failed!"$rest_color
