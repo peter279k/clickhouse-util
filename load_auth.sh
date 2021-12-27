@@ -7,6 +7,7 @@ echo -e $yellow_color"Load database auth file..."$rest_color
 auth_file_path=$1
 
 if [[ $auth_file_path == "" ]]; then
+    echo -e $yellow_color"Warning! auth file path will set ./auth.txt"$rest_color
     auth_file_path="./auth.txt"
 fi;
 

@@ -13,6 +13,8 @@ It also has some features about advanced checking. Such as auth setting file che
 # Usage
 
 - Install ClickHouse DB on Ubuntu 18.04 and 20.04
+- With normal commands, it will run one or more commands to do that.
+- It can simply use following command to complete this work :).
 
 ```Bash
 ./installer.sh
@@ -30,7 +32,7 @@ localadmin@clickhouse01:~/clickhouse-util$
 ```
 
 - Create database
-  - If auth file is not set, it will use the `./auth.txt` file path by default.
+  - If authentication file is not set, it will use the `./auth.txt` file path by default.
 
 ```Bash
 localadmin@clickhouse01:~/clickhouse-util$ ./create_database.sh --help

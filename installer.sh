@@ -1,7 +1,9 @@
 #!/bin/bash
 
-echo "Welcome to the ClickHouse Installer!"
-echo "This Bash script is only available for Ubuntu 18.04 and 20.04 now!"
+. ./load_colors.sh
+
+echo -e $green_color"Welcome to the ClickHouse Installer!"$rest_color
+echo -e $yellow_color"This Bash script is only available for Ubuntu 18.04 and 20.04 now!"$rest_color
 
 if [[ $USER != "root" ]]; then
     sudo_user="sudo"
