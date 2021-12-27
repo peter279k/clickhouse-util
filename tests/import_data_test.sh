@@ -10,7 +10,7 @@ test_import_data() {
     assertSame 2.6 "$(echo $query_result | awk '{print $3}')"
     assertSame 0 "$(echo $query_result | awk '{print $4}')"
     assertSame 11 "$(echo $query_result | awk '{print $5}')"
-    assertSame '2021-12-23 05:06:02' "$(echo $result | awk '{print $6" "$7}')"
+    assertSame '2021-12-23 05:06:02' "$(echo $query_result | awk '{print $6" "$7}')"
 }
 
 # Load shUnit2.
