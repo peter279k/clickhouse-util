@@ -5,7 +5,7 @@ test_import_data() {
     cd .. 
     ./import_data.sh iotdevice01 ./tests/fixtures/2021-12-23T05:06:02+00:00.csv CSV ./tests/fixtures/auth.txt
     query_result=$(clickhouse-client --query="select * from iotdevice.iotdevice01")
-    assertSame 53.6 "$(echo $query_result | awk '{print $1}')"
+    assertSame 53.06 "$(echo $query_result | awk '{print $1}')"
     assertSame 1000 "$(echo $query_result | awk '{print $2}')"
     assertSame 2.6 "$(echo $query_result | awk '{print $3}')"
     assertSame 0 "$(echo $query_result | awk '{print $4}')"
