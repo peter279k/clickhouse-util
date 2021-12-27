@@ -1,5 +1,7 @@
 # ClickHouse Util
 
+[![test](https://github.com/peter279k/clickhouse-util/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/peter279k/clickhouse-util/actions/workflows/test.yml)
+
 # Usage
 
 - Install ClickHouse DB on Ubuntu 18.04 and 20.04
@@ -73,3 +75,10 @@ Exporting data is started...
 Usage: ./export_data.sh table_name data_format outfile_path [auth_file_path]
 localadmin@clickhouse01:~/clickhouse-util$
 ```
+
+# Development Test
+
+- Ensuring the Docker command is available on targeted test host.
+- Running development ClickHouse server with `docker run --name clickhouse -p 9000:9000 -p 8123:8123 -d yandex/clickhouse-server` command where default password is blank.
+- Running `cd tests/ && git clone https://github.com/kward/shunit2` command to install shUnit2.
+- Running `./run_tests.sh` command to execute some tests.
