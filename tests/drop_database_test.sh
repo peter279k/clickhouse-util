@@ -4,7 +4,7 @@
 test_drop_database() {
     cd ..
     ./drop_database.sh iotdevice ./tests/fixtures/auth.txt
-    assertNotSame 0 "$(clickhouse-client --query=\"show databases\" | grep 'iotdevice')"
+    assertNotSame 0 "$(clickhouse-client --query='show databases' | grep 'iotdevice')"
 }
 
 # Load shUnit2.

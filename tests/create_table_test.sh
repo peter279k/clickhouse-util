@@ -3,8 +3,8 @@
 
 test_create_table() {
     cd ..
-    ./create_table.sh ./tests/fixtures/query.sql ./tests/fixtures/auth.txt
-    assertSame 0 "$(clickhouse-client --database=iotdevice --query=\"show tables\" | grep 'iotdevice01')"
+    ./create_table.sh ./tests/fixtures/query_test.sql ./tests/fixtures/auth.txt
+    assertSame 0 "$(clickhouse-client --database=iotdevice --query='show tables' | grep 'iotdevice01')"
 }
 
 # Load shUnit2.
