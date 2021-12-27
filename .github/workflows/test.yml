@@ -20,9 +20,6 @@ jobs:
       - name: Install ClickHouse client
         run: sudo apt-get update && sudo apt-get install apt-transport-https ca-certificates dirmngr && sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E0C56BD4 && echo "deb https://repo.clickhouse.com/deb/stable/ main/" | sudo tee /etc/apt/sources.list.d/clickhouse.list && sudo apt-get update && sudo apt-get install -y clickhouse-client
 
-      - name: ClickHouse Auth setup
-        run: cd tests/fixtures/ && echo "ip_address=127.0.0.1" >> auth.txt && echo "port_number=9000" >> auth.txt && echo "password=" >> auth.txt && echo "db_name=" >> auth.txt
-
       - name: shunit setup
         run: cd tests/ && git clone https://github.com/kward/shunit2
 
