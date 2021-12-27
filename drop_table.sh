@@ -17,11 +17,6 @@ if [[ $table_name == "--help" ]]; then
     exit 0;
 fi;
 
-if [[ $auth_file_path == "" ]]; then
-    auth_file_path="./auth.txt"
-fi;
-
-
 . ./basic_checker.sh $auth_file_path
 
 if [[ $? != 0 ]]; then

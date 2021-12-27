@@ -3,6 +3,12 @@
 . ./load_colors.sh
 
 arg=$1
+
+if [[ $arg == "" ]]; then
+    echo -e $yellow_color"Warning! auth file path will set ./auth.txt"$rest_color
+    arg="./auth.txt"
+fi;
+
 if [[ ! -f $arg ]]; then
     echo -e $red_color"auth.txt file is not found! Please check this file firstly!"$rest_color
     exit 1;
