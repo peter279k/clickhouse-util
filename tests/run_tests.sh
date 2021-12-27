@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo "Run tests has been started!"
 echo ""
 
