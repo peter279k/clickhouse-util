@@ -25,10 +25,12 @@ fi;
 
 . ./load_auth.sh $auth_file_path
 
+db_name=$(./regex_filter.sh $db_name)
+
 if [[ $password == "" ]]; then
     clickhouse-client --host=$ip_address --port=$port_number --database=$db_name --query="DROP TABLE IF EXISTS $table_name"
 else
-    clickhouse-client --host=$ip_address --port=$port_number --password=$password --database=$db_name --query="DROP TABLE IF EXISTS $table_name"
+    clickhouse-client --host=$ip_address --port=$port_number --password="$password" --database=$db_name --query="DROP TABLE IF EXISTS $table_name"
 fi;
 
 

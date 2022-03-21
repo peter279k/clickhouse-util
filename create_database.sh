@@ -12,13 +12,13 @@ if [[ $arg == "--help" ]]; then
     exit 0;
 fi;
 
-./basic_checker.sh $auth_file_path
+./basic_checker.sh "$auth_file_path"
 
 if [[ $? != 0 ]]; then
     exit 1;
 fi;
 
-. ./load_auth.sh $auth_file_path
+. ./load_auth.sh "$auth_file_path"
 
 if [[ $? != 0 ]]; then
     exit 1;
@@ -38,10 +38,12 @@ if [[ $port_number == "" ]]; then
     exit 1;
 fi;
 
+db_name=$(./regex_filter.sh $db_name)
+
 if [[ $password == "" ]]; then
     clickhouse-client --host=$ip_address --port=$port_number --query="CREATE DATABASE IF NOT EXISTS $db_name"
 else
-    clickhouse-client --host=$ip_address --port=$port_number --password=$password --query="CREATE DATABASE IF NOT EXISTS $db_name"
+    clickhouse-client --host=$ip_address --port=$port_number --password="$password" --query="CREATE DATABASE IF NOT EXISTS $db_name"
 fi;
 
 if [[ $? != 0 ]]; then

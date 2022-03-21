@@ -17,18 +17,20 @@ if [[ $table_query_file == "--help" ]]; then
     exit 0;
 fi;
 
-. ./basic_checker.sh $auth_file_path
+. ./basic_checker.sh "$auth_file_path"
 
 if [[ $? != 0 ]]; then
     exit 1;
 fi;
 
-. ./load_auth.sh $auth_file_path
+. ./load_auth.sh "$auth_file_path"
+
+db_name=$(./regex_filter.sh "$db_name")
 
 if [[ $password == "" ]]; then
     cat $table_query_file | clickhouse-client --host=$ip_address --port=$port_number --database=$db_name
 else
-    cat $table_query_file | clickhouse-client --host=$ip_address --port=$port_number --password=$password --database=$db_name
+    cat $table_query_file | clickhouse-client --host=$ip_address --port=$port_number --password="$password" --database=$db_name
 fi;
 
 

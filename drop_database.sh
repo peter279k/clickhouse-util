@@ -28,10 +28,12 @@ if [[ $db_name == "" ]]; then
     db_name=$arg
 fi;
 
+db_name=$(./regex_filter.sh $db_name)
+
 if [[ $password == "" ]]; then
     clickhouse-client --host=$ip_address --port=$port_number --query="DROP DATABASE IF EXISTS $db_name"
 else
-    clickhouse-client --host=$ip_address --port=$port_number --password=$password --query="DROP DATABASE IF EXISTS $db_name"
+    clickhouse-client --host=$ip_address --port=$port_number --password="$password" --query="DROP DATABASE IF EXISTS $db_name"
 fi;
 
 if [[ $? != 0 ]]; then

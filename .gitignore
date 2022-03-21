@@ -1,2 +1,3 @@
-query.sql
+*.sql
+*.csv
 /auth.txt

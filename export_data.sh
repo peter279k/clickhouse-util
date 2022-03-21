@@ -32,10 +32,12 @@ fi;
 
 . ./load_auth.sh $auth_file_path
 
+db_name=$(./regex_filter.sh $db_name)
+
 if [[ $password == "" ]]; then
     clickhouse-client --host=$ip_address --port=$port_number --database=$db_name --query="SELECT * from $table_name" --format $data_format > $outfile_path
 else
-    clickhouse-client --host=$ip_address --port=$port_number --password=$password --database=$db_name --query="SELECT * from $table_name" --format $data_format > $outfile_path
+    clickhouse-client --host=$ip_address --port=$port_number --password="$password" --database=$db_name --query="SELECT * from $table_name" --format $data_format > $outfile_path
 fi;
 
 if [[ $? != 0 ]]; then

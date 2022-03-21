@@ -4,7 +4,7 @@
 
 echo -e $yellow_color"Load database auth file..."$rest_color
 
-auth_file_path=$1
+echo $auth_file_path
 
 ip_address=$(cat $auth_file_path | grep "^ip_address" | awk '{split($1,a,"="); print a[2]}')
 port_number=$(cat $auth_file_path | grep "^port_number" | awk '{split($1,a,"="); print a[2]}')

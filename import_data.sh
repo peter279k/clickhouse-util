@@ -42,10 +42,12 @@ fi;
 
 . ./load_auth.sh $auth_file_path
 
+db_name=$(./regex_filter.sh $db_name)
+
 if [[ $password == "" ]]; then
     clickhouse-client --host=$ip_address --port=$port_number --database=$db_name --query="INSERT INTO $db_name.$table_name FORMAT $data_format" --max_insert_block_size=100000 < $data_file
 else
-    clickhouse-client --host=$ip_address --port=$port_number --password=$password --database=$db_name --query="INSERT INTO $db_name.$table_name FORMAT $data_format" --max_insert_block_size=100000 < $data_file
+    clickhouse-client --host=$ip_address --port=$port_number --password="$password" --database=$db_name --query="INSERT INTO $db_name.$table_name FORMAT $data_format" --max_insert_block_size=100000 < $data_file
 fi;
 
 
